@@ -1,12 +1,11 @@
 <?php
-    if (!session_start()) session_start(); 
+    if (!session_start())session_start(); 
     include 'connect.php';
     if (isset($_POST['del_mhs']))
     {
         $id = $_POST['del_mhs'];
         $del = "DELETE FROM `mahasiswa` WHERE `NIM` = $id";
         $fin = mysqli_query($conn, $del);
-        header("refresh:0; index.php");
     }
 ?>
 <!DOCTYPE html>
@@ -61,12 +60,10 @@
                             </td>
                             <td class="text-center">
                                 <form action="mhs_update.php" method="POST">
-                                    <button class="btn btn-outline-success" name="update_mhs" value="<?php echo $nim; ?>">
+                                    <input type="hidden" name="nim", value="<?php echo $nim; ?>">
+                                    <button class="btn btn-outline-success" name="update_mhs">
                                         Edit
                                     </button>
-                                    <?php 
-                                        $_SESSION['up_id'] = $nim; 
-                                    ?>
                                 </form>
                             </td>
                         </tr>                                        
@@ -82,9 +79,6 @@
             <button class="btn btn-outline-success" name="insert_mhs">
                 INSERT
             </button>
-            <?php 
-                $_SESSION['add_id'] = "add_mhs"; 
-            ?>
         </form>
     </footer>
 </html>

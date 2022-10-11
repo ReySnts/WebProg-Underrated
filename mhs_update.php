@@ -1,12 +1,21 @@
 <?php
     if (!session_start()) session_start();
     include 'connect.php';
-    $up_id = $_SESSION['up_id'];
+    $up_id = $_POST['nim'];
+    echo "NIM: " . $up_id;
+    function check1()
+    {
+        if 
+        (
+            isset($_POST['nama_new']) && 
+            isset($_POST['email_new']) && 
+            isset($_POST['alamat_new'])
+        )
+            return 1;
+    }
     if 
     (
-        isset($_POST['nama_new']) && 
-        isset($_POST['email_new']) && 
-        isset($_POST['alamat_new']) && 
+        check1() && 
         isset($_POST['update_mhs'])
     )
     {
@@ -14,7 +23,7 @@
         $new_name = $_POST['nama_new']; 
         $new_mail = $_POST['email_new']; 
         $new_addr = $_POST['alamat_new']; 
-        $up_query = "UPDATE `mahasiswa` SET `Nama`= '$new_name', `E-mail`= '$new_mail', `Alamat`= '$new_addr' WHERE `NIM` = '$id'";
+        $up_query = "UPDATE `mahasiswa` SET `Nama` = '$new_name', `E-mail` = '$new_mail', `Alamat` = '$new_addr' WHERE NIM = $id";
         $conf = mysqli_query($conn, $up_query);
         header("refresh:0; index.php");
     }
@@ -31,17 +40,17 @@
         <title>UPDATE</title>
     </head>
     <body>
-        <form action="index.php" method="POST">
+        <form action="" method="POST">
             <div class="mb-3">
-                <label for="nama">Nama</label>
+                <label for="nama_new">Nama</label>
                 <input type="text" name="nama_new" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="email">Email</label>
+                <label for="email_new">Email</label>
                 <input type="text" name="email_new" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="alamat">Alamat</label>
+                <label for="alamat_new">Alamat</label>
                 <input type="text" name="alamat_new" class="form-control">
             </div>
             <button type="submit" name="update_mhs" class="btn btn-outline-success" value="<?php echo $up_id ?>">

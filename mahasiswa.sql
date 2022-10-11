@@ -36,7 +36,8 @@ CREATE TABLE
     `NIM` CHAR(10) PRIMARY KEY,
     `Nama` VARCHAR(255) NOT NULL,
     `E-mail` VARCHAR(255) NOT NULL,
-    `Alamat` VARCHAR(255) NOT NULL
+    `Alamat` VARCHAR(255) NOT NULL,
+    CHECK(`E-mail` LIKE '%@%')
   )   
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

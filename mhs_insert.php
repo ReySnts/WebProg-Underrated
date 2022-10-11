@@ -1,13 +1,20 @@
 <?php
   if (!session_start()) session_start();
   include 'connect.php';
-  $add_id = $_SESSION['add_id'];
+  function check_ins()
+  {
+    if
+    (
+      isset($_POST['nim_add']) && 
+      isset($_POST['nama_add']) && 
+      isset($_POST['email_add']) && 
+      isset($_POST['alamat_add']) 
+    )
+      return 1;
+  }
   if 
   (
-    isset($_POST['nim_add']) &&
-    isset($_POST['nama_add']) && 
-    isset($_POST['email_add']) && 
-    isset($_POST['alamat_add']) &&
+    check_ins() && 
     isset($_POST['insert_mhs'])
   )
   {
@@ -15,7 +22,7 @@
     $add_name = $_POST['nama_add'];
     $add_mail = $_POST['email_add']; 
     $add_addr = $_POST['alamat_add'];
-    $add_query = "INSERT INTO `mahasiswa` VALUES ('$add_nim', '$add_name', '$add_mail', '$add_addr')";
+    $add_query = "INSERT INTO `mahasiswa` (`Nim`, `Nama`, `E-mail`, `Alamat`) VALUES ('$add_nim', '$add_name', '$add_mail', '$add_addr')";
     $conf = mysqli_query($conn, $add_query);
     header("refresh:0; index.php");
   }
@@ -32,24 +39,24 @@
     <title>INSERT</title>
   </head>
   <body>
-    <form action="index.php" method="POST">
+    <form action="" method="POST">
       <div class="mb-3">
-        <label for="nim">NIM</label>
+        <label for="nim_add">NIM</label>
         <input type="text" name="nim_add" class="form-control">
       </div>
       <div class="mb-3">
-        <label for="nama">Nama</label>
+        <label for="nama_add">Nama</label>
         <input type="text" name="nama_add" class="form-control">
       </div>
       <div class="mb-3">
-        <label for="email">Email</label>
+        <label for="email_add">Email</label>
         <input type="text" name="email_add" class="form-control">
       </div>
       <div class="mb-3">
-        <label for="alamat">Alamat</label>
+        <label for="alamat_add">Alamat</label>
         <input type="text" name="alamat_add" class="form-control">
       </div>
-      <button type="submit" name="insert_mhs" class="btn btn-outline-success" value="<?php echo $add_id ?>">
+      <button type="submit" name="insert_mhs" class="btn btn-outline-success">
         Insert
       </button>
       <a href="index.php" class="btn btn-outline-danger">Back</a>
