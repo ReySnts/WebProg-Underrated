@@ -1,7 +1,8 @@
 <?php
     if (!session_start()) session_start();
     include 'connect.php';
-    $up_id = $_SESSION['up_id'];
+    $up_id = $_POST['nim'];
+    echo $up_id;
     function check1(){
         if(isset($_POST['nama_new']) && isset($_POST['email_new'])
         && isset($_POST['alamat_new'])){

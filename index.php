@@ -61,13 +61,14 @@
                             </td>
                             <td class="text-center">
                                 <form action="mhs_update.php" method="POST">
-                                    <button class="btn btn-outline-success" name="update_mhs" value="<?php echo $nim; ?>">
+                                    <input type="hidden" name="nim", value="<?php echo $nim; ?>">
+                                    <button class="btn btn-outline-success" name="update_mhs">
                                         Edit
                                     </button>
-                                    <?php 
-                                        $_SESSION['up_id'] = $nim; 
-                                    ?>
                                 </form>
+                                    <!-- <?php 
+                                        $_SESSION['up_id'] = $nim; 
+                                    ?> -->
                             </td>
                         </tr>                                        
                     <?php
