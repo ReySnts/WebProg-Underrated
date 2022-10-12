@@ -5,6 +5,6 @@
         "localhost",
         "root",
         "",
-        "college_prog1"
+        "asgwebprog1"
     );
 ?>
