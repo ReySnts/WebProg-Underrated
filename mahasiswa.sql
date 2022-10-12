@@ -7,10 +7,13 @@
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET 
+  SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
+START TRANSACTION;
+
+SET 
+  time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,20 +30,60 @@ SET time_zone = "+00:00";
 -- Table structure for table `mahasiswa`
 --
 
-CREATE TABLE `mahasiswa` (
-  `Nim` varchar(255) NOT NULL,
-  `Nama` varchar(255) NOT NULL,
-  `E-mail` varchar(255) NOT NULL,
-  `Alamat` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE 
+  `mahasiswa` 
+  (
+    `NIM` CHAR(10) PRIMARY KEY,
+    `Nama` VARCHAR(255) NOT NULL,
+    `E-mail` VARCHAR(255) NOT NULL,
+    `Alamat` VARCHAR(255) NOT NULL,
+    CHECK(`E-mail` LIKE '%@%')
+  )   
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`Nim`, `Nama`, `E-mail`, `Alamat`) VALUES
-('2440068051', 'Leonard', 'leonard@mail.com', 'Jalan permata 2 no 9'),
-('233531431', 'Brandon', 'Brandon@mail.com', 'Jalan Kenari no 5');
+INSERT INTO 
+  `mahasiswa` 
+  (
+    `NIM`, 
+    `Nama`, 
+    `E-mail`, 
+    `Alamat`
+  ) 
+VALUES
+(
+  '2440068051', 
+  'Leonard Theodorus', 
+  'leeeleonard@mail.com', 
+  'Jalan Permata 2 No. 9'
+),
+(
+  '2401960435', 
+  'Reynaldy Sentosa', 
+  'reysnts@mail.com', 
+  'Jalan Kampung Duri 11 No. 7'
+),
+(
+  '2440045211', 
+  'Ryu Aprijanto', 
+  'ryuryu@mail.com', 
+  'Jalan Pal Putih 6 No. 28'
+),
+(
+  '2440050615', 
+  'Ellin Anggriani', 
+  'virgories@mail.com', 
+  'Jalan Nusa Dua 5 No. 12'
+),
+(
+  '2401960851', 
+  'Vania', 
+  'pancai@mail.com', 
+  'Jalan Meranti 9 No. 15'
+);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
